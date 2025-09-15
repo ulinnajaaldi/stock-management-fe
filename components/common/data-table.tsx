@@ -15,9 +15,6 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 
-import { DataTablePagination } from "@/components/common/data-table-pagination";
-import { DataTableViewOptions } from "@/components/common/data-table-view-option";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -114,9 +111,6 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-      </div>
-      <div className="py-4">
-        <DataTablePagination table={table} />
       </div>
     </div>
   );

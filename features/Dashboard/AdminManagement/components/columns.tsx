@@ -2,15 +2,12 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { UserServices } from "@/services/User";
-
 import { UserUseCases } from "@/useCases/User";
 
 import { DataTableColumnHeader } from "@/components/common/data-table-column-header";
 
 import ColumnAction from "./column-action";
 
-// Helper function to format role display
 const formatRole = (role: string) => {
   switch (role) {
     case "admin":
@@ -23,7 +20,7 @@ const formatRole = (role: string) => {
 };
 
 export type ResponseType =
-  ReturnType<typeof UserUseCases.getAllAdmin> extends {
+  ReturnType<typeof UserUseCases.useGetAllAdmin> extends {
     data: { data: { data: (infer U)[] } } | undefined;
   }
     ? U
@@ -61,7 +58,7 @@ export const columns: ColumnDef<ResponseType>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      return <ColumnAction teamId={row.original.id} />;
+      return <ColumnAction id={row.original.id} />;
     },
   },
 ];

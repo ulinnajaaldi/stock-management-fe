@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import Cookies from "js-cookie";
 
 import { ACCESS_TOKEN, API_URL } from "@/constants/config";

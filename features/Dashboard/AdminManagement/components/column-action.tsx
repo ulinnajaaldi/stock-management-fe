@@ -17,14 +17,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const ColumnAction = ({ teamId }: { teamId: string }) => {
+const ColumnAction = ({ id }: { id: string }) => {
   const { openDrawer, closeDrawer } = useModal();
   const [ConfirmDialog, confirm] = useConfirm(
     "Are you sure?",
     "You are to delete this data. This action cannot be undone.",
   );
 
-  const mutateDelete = UserUseCases.deleteAdmin(teamId);
+  const mutateDelete = UserUseCases.useDeleteAdmin(id);
 
   const handleDelete = async () => {
     const ok = await confirm();
@@ -50,7 +50,7 @@ const ColumnAction = ({ teamId }: { teamId: string }) => {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() => {
-              openDrawer("form-team", teamId);
+              openDrawer("form-edit-admin", id);
             }}
           >
             Edit

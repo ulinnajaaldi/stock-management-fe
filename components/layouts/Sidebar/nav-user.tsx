@@ -1,10 +1,12 @@
 "use client";
 
 import { IconDotsVertical, IconLogout } from "@tabler/icons-react";
+import { Pencil } from "lucide-react";
 
 import { IGetProfile } from "@/domains/User";
 
 import { useAuthStore } from "@/hooks/use-auth";
+import useModal from "@/hooks/use-modal";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -25,6 +27,7 @@ import {
 const NavUser = ({ user }: { user: IGetProfile | null }) => {
   const { isMobile } = useSidebar();
   const { logout } = useAuthStore();
+  const { openDrawer } = useModal();
 
   return (
     <SidebarMenu>
@@ -80,6 +83,16 @@ const NavUser = ({ user }: { user: IGetProfile | null }) => {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
+              onClick={() => {
+                openDrawer("form-edit-admin", user?.id);
+              }}
+            >
+              <div className="flex items-center gap-3 text-sm">
+                <Pencil className="size-3 text-base" /> Edit Data
+              </div>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              variant="destructive"
               onClick={() => {
                 logout();
               }}
